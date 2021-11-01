@@ -2,15 +2,21 @@ import * as React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Header from '../components/Header';
 
 export default function Index() {
+  const [value, setValue] = React.useState('');
+
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Runninng
-        </Typography>
-      </Box>
-    </Container>
+    <>
+      <Header value={value} setValue={setValue} />
+      <Container maxWidth={'md'}>
+        <Box>
+          <Typography variant="h4" component="h1" gutterBottom>
+            {value}
+          </Typography>
+        </Box>
+      </Container>
+    </>
   );
 }
