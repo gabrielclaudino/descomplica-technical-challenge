@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "ROOT",
+      "path": "."
+    },
+    {
+      "path": "api"
+    },
+    {
+      "path": "ui"
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules/**": true,
+    }
+  }
+}
