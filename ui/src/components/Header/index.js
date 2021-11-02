@@ -1,46 +1,45 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import SearchIcon from '@mui/icons-material/Search';
-import { AppBar, IconButton, Link, Toolbar } from '@mui/material';
+import { AppBar, Box, Button, IconButton, Link, Toolbar } from '@mui/material';
 import Image from 'next/image';
-import SearchBar from '../SearchBar';
+import NextLink from 'next/link';
+import { styled } from '@mui/system';
+
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  [theme.breakpoints.up('md')]: {
+    justifyContent: 'space-between',
+  },
+}));
 
 const Header = ({ value, setValue }) => {
-  const [searchActive, setSearchActive] = React.useState(false);
-
   return (
     <AppBar position="static" color="transparent" elevation={0}>
-      <Toolbar>
-        {!searchActive ? (
-          <>
-            <Link href="#" sx={{ display: 'flex', flexGrow: 1 }}>
-              <Image
-                src="/logo.svg"
-                alt="Logo"
-                loading="lazy"
-                height={37}
-                width="100%"
-              />
-            </Link>
-            <IconButton
-              size="large"
-              color="inherit"
-              aria-label="Pesquisar"
-              onClick={() => setSearchActive(true)}
-            >
-              <SearchIcon />
-            </IconButton>
-          </>
-        ) : (
-          <>
-            <SearchBar
-              value={value}
-              setValue={setValue}
-              onBack={() => setSearchActive(false)}
-            ></SearchBar>
-          </>
-        )}
-      </Toolbar>
+      <StyledToolbar>
+        <NextLink href="/" passHref>
+          <Link href="/" sx={{ display: 'flex' }}>
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              loading="lazy"
+              height={37}
+              width="100%"
+            />
+          </Link>
+        </NextLink>
+
+        <Button
+          variant="text"
+          sx={{
+            display: { xs: 'none', md: 'block' },
+            whiteSpace: 'nowrap',
+            minWidth: 'max-content',
+          }}
+        >
+          Adicionar aluno
+        </Button>
+      </StyledToolbar>
     </AppBar>
   );
 };

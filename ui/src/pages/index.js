@@ -9,7 +9,7 @@ export default function Index() {
 
   return (
     <>
-      <Header value={value} setValue={setValue} />
+      <Header />
       <Container maxWidth={'md'}>
         <Box>
           <Typography variant="h4" component="h1" gutterBottom>
