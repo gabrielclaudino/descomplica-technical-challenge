@@ -1,12 +1,13 @@
 import { createTheme } from '@mui/material/styles';
-import { ptBR } from '@mui/material/locale';
+import { ptBR } from '@mui/x-data-grid';
+import { ptBR as corePtBr } from '@mui/material/locale';
 
 const theme = createTheme(
   {
     palette: {
       primary: {
-        main: '#00fa9a',
-        dark: '#127358',
+        main: '#127358',
+        light: '#00fa9a',
       },
       secondary: {
         main: '##fed500',
@@ -17,7 +18,8 @@ const theme = createTheme(
       },
     },
   },
-  ptBR
+  ptBR,
+  corePtBr
 );
 
 export default theme;
