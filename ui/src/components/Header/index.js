@@ -13,7 +13,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   },
 }));
 
-const Header = ({ value, setValue }) => {
+const Header = () => {
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <StyledToolbar>
@@ -30,11 +30,13 @@ const Header = ({ value, setValue }) => {
         </NextLink>
 
         <Button
-          variant="text"
+          variant="contained"
+          disableElevation
           sx={{
             display: { xs: 'none', md: 'block' },
             whiteSpace: 'nowrap',
             minWidth: 'max-content',
+            fontWeight: 'bold',
           }}
         >
           Adicionar aluno
@@ -42,11 +44,6 @@ const Header = ({ value, setValue }) => {
       </StyledToolbar>
     </AppBar>
   );
-};
-
-Header.propTypes = {
-  value: PropTypes.string,
-  setValue: PropTypes.func,
 };
 
 export default Header;

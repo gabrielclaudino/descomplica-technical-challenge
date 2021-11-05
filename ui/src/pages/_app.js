@@ -4,15 +4,17 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
+import { ApolloProvider } from '@apollo/client';
+import { useApollo } from '../lib/apollo';
 import theme from '../theme/theme';
 import createEmotionCache from '../lib/createEmotionCache';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-export default function MyApp(props) {
+export default function App(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
+  const apolloClient = useApollo(pageProps);
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -22,13 +24,15 @@ export default function MyApp(props) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <ApolloProvider client={apolloClient}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </ThemeProvider>
     </CacheProvider>
   );
 }
 
-MyApp.propTypes = {
+App.propTypes = {
   Component: PropTypes.elementType.isRequired,
   emotionCache: PropTypes.object,
   pageProps: PropTypes.object.isRequired,
