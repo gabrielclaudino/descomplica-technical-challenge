@@ -3103,6 +3103,11 @@ mongodb@4.1.3:
   optionalDependencies:
     saslprep "^1.0.3"
 
+mongoose-delete@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/mongoose-delete/-/mongoose-delete-0.5.4.tgz#588374bf144cbffa209a549f247e5482054715f2"
+  integrity sha512-zKkcWFEwTneVG4Oiy+qJRJPFCiGlqOJToHeU3a3meJybWsHCnWxdHkGEkFWNY5cmYEv5av3WwByOhPlQ6I+FmQ==
+
 mongoose@^6.0.12:
   version "6.0.12"
   resolved "https://registry.npmjs.org/mongoose/-/mongoose-6.0.12.tgz"

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongooseDelete from 'mongoose-delete';
 
 const StudentSchema = new mongoose.Schema(
   {
@@ -15,5 +16,8 @@ const StudentSchema = new mongoose.Schema(
     collection: 'student',
   }
 );
+
+StudentSchema.plugin(mongooseDelete, { overrideMethods: 'all' });
+StudentSchema.plugin(mongooseDelete, { deletedAt: true });
 
 export default mongoose.model('Student', StudentSchema);
