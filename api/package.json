@@ -1,0 +1,43 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "a koa graphql api ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/web/boot.js",
+    "clean": "rm -rf dist",
+    "dev": ". ./.env && nodemon app/web/boot.js --exec babel-node",
+    "build": "npm run clean && babel app -d dist --source-maps && babel ./package.json -d dist --copy-files",
+    "lint": "eslint . --fix"
+  },
+  "repository": "https://github.com/gabrielclaudino/descomplica-technical-challenge",
+  "author": "Gabriel Claudino <gabriel.claudino@protonmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "bunyan": "^1.8.15",
+    "bunyan-format": "^0.2.1",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^5.1.0",
+    "koa-helmet": "^6.1.0",
+    "koa-morgan": "^1.0.1",
+    "koa-mount": "^4.0.0",
+    "koa-respond": "^2.1.0",
+    "koa-router": "^10.1.1",
+    "mongoose": "^6.0.12",
+    "zlib": "^1.0.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.14",
+    "prettier": "^2.4.1"
+  }
+}
