@@ -16,8 +16,12 @@
   "private": false,
   "dependencies": {
     "@koa/cors": "^3.1.0",
+    "apollo-server-core": "^3.5.0",
+    "apollo-server-koa": "^3.5.0",
     "bunyan": "^1.8.15",
     "bunyan-format": "^0.2.1",
+    "graphql": "^16.0.1",
+    "graphql-tools": "^8.2.0",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-compress": "^5.1.0",
