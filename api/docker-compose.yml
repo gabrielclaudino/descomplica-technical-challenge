@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mongodb:
+    container_name: descomplica_mongodb
+    image: mongo
+    ports:
+      - 27017:27017
+
+  mongo-seed-descomplica:
+    depends_on:
+      - mongodb
+    build: ./db-seed
+    links:
+      - mongodb
