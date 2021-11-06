@@ -102,7 +102,7 @@ export const getStaticProps = async () => {
     });
   } catch {
     return {
-      notFound: true,
+      props: {},
     };
   }
 };
