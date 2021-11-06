@@ -8,8 +8,8 @@ import logger from '../lib/logger';
 import '../lib/mongo';
 import app from './index';
 
-import { typeDefs } from '../lib/temp/schema';
-import { resolvers } from '../lib/temp/resolver';
+import { typeDefs } from '../domain/student/schema';
+import { resolvers } from '../domain/student/resolver';
 
 async function startServer() {
   const httpServer = http.createServer();
