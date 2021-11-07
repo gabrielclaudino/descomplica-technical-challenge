@@ -13,7 +13,7 @@ const Index = () => {
   const { data, loading, error, refetch } = useQuery(ALL_STUDENTS_QUERY, {});
   const [
     updateStudent,
-    { data: muiData, loading: muiLoading, error: mutErrro },
+    { error: mutErrro },
   ] = useMutation(UPDATE_STUDENT_MUTATION);
 
   const columns = [
@@ -67,7 +67,7 @@ const Index = () => {
         </Typography>
 
         <Typography align="center" pt={3} pb={2}>
-          Visualize, edite, ou até insira novos estudantes
+          Visualize ou edite seus estudantes
         </Typography>
 
         <Box sx={{ flexGrow: 1 }}>
