@@ -13,7 +13,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    createStudent(student: CreateStudentInput): Student
+    createStudent(student: CreateStudentInput): Student!
     updateStudent(id: ID!, student: UpdateStudentInput): Student
     deleteStudent(id: ID!): Student
   }

@@ -1,15 +1,20 @@
 import * as React from 'react';
 import { Box, Container, Fab, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useQuery } from '@apollo/client';
-import { ALL_STUDENTS_QUERY } from '../lib/graphql/allStudents';
+import { useMutation, useQuery } from '@apollo/client';
 import { addApolloState, initializeApollo } from '../lib/apollo';
+import { ALL_STUDENTS_QUERY } from '../lib/graphql/allStudents';
+import { UPDATE_STUDENT_MUTATION } from '../lib/graphql/updateStudent';
 
 import Header from '../components/Header';
 import StudentsDataGrid from '../components/StudentsDataGrid';
 
 const Index = () => {
   const { data, loading, error, refetch } = useQuery(ALL_STUDENTS_QUERY, {});
+  const [
+    updateStudent,
+    { data: muiData, loading: muiLoading, error: mutErrro },
+  ] = useMutation(UPDATE_STUDENT_MUTATION);
 
   const columns = [
     {
@@ -35,8 +40,17 @@ const Index = () => {
   const rows = data?.allStudents || [];
 
   const handleEditCommit = ({ field, id, value }) => {
-    console.log('handleEditCommit');
+    updateStudent({
+      variables: {
+        id,
+        student: { [field]: value },
+      },
+    });
   };
+
+  if (mutErrro) {
+    console.error('Error', mutErrro);
+  }
 
   return (
     <>
