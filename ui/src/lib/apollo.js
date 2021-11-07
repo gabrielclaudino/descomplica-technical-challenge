@@ -14,7 +14,7 @@ export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 let apolloClient;
 
 const httpLink = new HttpLink({
-  uri: process.env.GRAPHQL_URI,
+  uri: process.env.NEXT_PUBLIC_GRAPHQL_URI,
 });
 
 const errorLink = onError(
