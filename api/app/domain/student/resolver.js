@@ -10,17 +10,22 @@ export const resolvers = {
     },
   },
   Mutation: {
-    createStudent: async (_, { user }) => {
-      return model.create({ id: crypto.randomUUID(), ...user });
+    createStudent: async (_, { student }) => {
+      return model.create({ id: crypto.randomUUID(), ...student });
     },
-    updateStudent: (_, { id, user }) => {
-      // TODO IT
-      console.log({ id, user });
+
+    updateStudent: async (_, { id, student }) => {
+      return await model.findOneAndUpdate(
+        { id },
+        { $set: { ...removeUndefined(student) } },
+        { new: true }
+      );
     },
+
     deleteStudent: async (_, { id }) => {
       const student = await model.findOne({ id });
       if (student === null) {
-        throw new UserInputError('User not found');
+        throw new UserInputError('Student not found');
       }
       await student.delete();
       return student;

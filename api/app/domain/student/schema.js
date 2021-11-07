@@ -13,8 +13,8 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    createStudent(user: CreateStudentInput): Student
-    updateStudent(user: UpdateStudentInput): Student
+    createStudent(student: CreateStudentInput): Student
+    updateStudent(id: ID!, student: UpdateStudentInput): Student
     deleteStudent(id: ID!): Student
   }
 
@@ -25,7 +25,6 @@ export const typeDefs = gql`
   }
 
   input UpdateStudentInput {
-    id: ID!
     name: String
     cpf: String
     email: String
