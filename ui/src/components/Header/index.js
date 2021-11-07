@@ -33,7 +33,7 @@ const Header = () => {
           variant="contained"
           disableElevation
           sx={{
-            display: { xs: 'none', md: 'block' },
+            display: { xs: 'none', md: 'none' },
             whiteSpace: 'nowrap',
             minWidth: 'max-content',
             fontWeight: 'bold',

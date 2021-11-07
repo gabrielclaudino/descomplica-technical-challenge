@@ -9,24 +9,15 @@ const Wrapper = styled('div')(({ theme }) => ({
   paddingBottom: '2rem',
 }));
 
-const StudentsDataGrid = ({
-  rows,
-  columns,
-  loading,
-  onFilterChange,
-  onEditCommit,
-}) => {
+const StudentsDataGrid = ({ rows, columns, loading, onEditCommit }) => {
   return (
     <Wrapper>
       <DataGrid
-        pageSize={25}
-        loading={loading}
         rows={rows}
         columns={columns}
-        filterMode="server"
-        editMode="row"
-        onFilterModelChange={onFilterChange}
-        onRowEditCommit={onEditCommit}
+        loading={loading}
+        pageSize={25}
+        onCellEditCommit={onEditCommit}
       />
     </Wrapper>
   );
@@ -40,7 +31,6 @@ StudentsDataGrid.propTypes = {
   rows: PropTypes.arrayOf(Object),
   columns: PropTypes.arrayOf(Object),
   loading: PropTypes.bool,
-  onFilterChange: PropTypes.func,
   onEditCommit: PropTypes.func,
 };
 

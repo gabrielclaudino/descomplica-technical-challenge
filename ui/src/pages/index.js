@@ -7,30 +7,26 @@ import { addApolloState, initializeApollo } from '../lib/apollo';
 
 import Header from '../components/Header';
 import StudentsDataGrid from '../components/StudentsDataGrid';
-import filterOperators from '../lib/FilterOperators';
 
 const Index = () => {
-  const { data, loading, error } = useQuery(ALL_STUDENTS_QUERY, {});
+  const { data, loading, error, refetch } = useQuery(ALL_STUDENTS_QUERY, {});
 
   const columns = [
     {
       field: 'name',
       headerName: 'Nome do Aluno',
-      filterOperators,
       width: 200,
       editable: true,
     },
     {
       field: 'cpf',
       headerName: 'CPF',
-      filterOperators,
       width: 150,
       editable: true,
     },
     {
       field: 'email',
       headerName: 'Email',
-      filterOperators,
       width: 200,
       editable: true,
     },
@@ -38,13 +34,7 @@ const Index = () => {
 
   const rows = data?.allStudents || [];
 
-  // TODO: implement this
-  const handleFilterModelChange = () => {
-    console.log('handleFilterModelChange');
-  };
-
-  // TODO: implement this
-  const handleEditCommit = () => {
+  const handleEditCommit = ({ field, id, value }) => {
     console.log('handleEditCommit');
   };
 
@@ -72,14 +62,13 @@ const Index = () => {
             columns={columns}
             loading={loading}
             error={error}
-            onFilterChange={handleFilterModelChange}
             onEditCommit={handleEditCommit}
           />
         </Box>
       </Container>
       <Box
         sx={{
-          display: { xs: 'flex', md: 'none' },
+          display: { xs: 'none', md: 'none' },
           position: 'fixed',
           width: '100%',
           justifyContent: 'center',
@@ -102,7 +91,7 @@ export const getStaticProps = async () => {
 
     return addApolloState(client, {
       props: {},
-      revalidate: 60,
+      revalidate: 1,
     });
   } catch {
     return {
