@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-koa');
+import { gql } from 'apollo-server-koa';
 
 export const typeDefs = gql`
   type Student {
@@ -15,7 +15,7 @@ export const typeDefs = gql`
   type Mutation {
     createStudent(user: CreateStudentInput): Student
     updateStudent(user: UpdateStudentInput): Student
-    deleteStudent(id: ID!): [Student]
+    deleteStudent(id: ID!): Student
   }
 
   input CreateStudentInput {

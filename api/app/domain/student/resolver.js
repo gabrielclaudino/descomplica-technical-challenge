@@ -1,5 +1,6 @@
 import model from './model';
 import { removeUndefined } from '../../lib/remove-falsy';
+import { UserInputError } from 'apollo-server-koa';
 import crypto from 'crypto';
 
 export const resolvers = {
@@ -9,16 +10,20 @@ export const resolvers = {
     },
   },
   Mutation: {
-    createStudent: (_, { user }) => {
+    createStudent: async (_, { user }) => {
       return model.create({ id: crypto.randomUUID(), ...user });
     },
     updateStudent: (_, { id, user }) => {
       // TODO IT
       console.log({ id, user });
     },
-    deleteStudent: (_, { id }) => {
-      // TODO IT
-      console.log(id);
+    deleteStudent: async (_, { id }) => {
+      const student = await model.findOne({ id });
+      if (student === null) {
+        throw new UserInputError('User not found');
+      }
+      await student.delete();
+      return student;
     },
   },
 };
