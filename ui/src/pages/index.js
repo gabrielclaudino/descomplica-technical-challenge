@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Container, Divider, Fab, Typography } from '@mui/material';
+import { Box, Container, Fab, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useQuery } from '@apollo/client';
 import { ALL_STUDENTS_QUERY } from '../lib/graphql/allStudents';
@@ -7,6 +7,7 @@ import { addApolloState, initializeApollo } from '../lib/apollo';
 
 import Header from '../components/Header';
 import StudentsDataGrid from '../components/StudentsDataGrid';
+import filterOperators from '../lib/FilterOperators';
 
 const Index = () => {
   const { data, loading, error } = useQuery(ALL_STUDENTS_QUERY, {});
@@ -15,18 +16,21 @@ const Index = () => {
     {
       field: 'name',
       headerName: 'Nome do Aluno',
+      filterOperators,
       width: 200,
       editable: true,
     },
     {
       field: 'cpf',
       headerName: 'CPF',
+      filterOperators,
       width: 150,
       editable: true,
     },
     {
       field: 'email',
       headerName: 'Email',
+      filterOperators,
       width: 200,
       editable: true,
     },
