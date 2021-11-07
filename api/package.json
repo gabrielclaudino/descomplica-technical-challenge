@@ -10,11 +10,15 @@
     "build": "npm run clean && babel app -d dist --source-maps && babel ./package.json -d dist --copy-files",
     "lint": "eslint . --fix"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "repository": "https://github.com/gabrielclaudino/descomplica-technical-challenge",
   "author": "Gabriel Claudino <gabriel.claudino@protonmail.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@babel/runtime": "^7.16.0",
     "@koa/cors": "^3.1.0",
     "apollo-server-core": "^3.5.0",
     "apollo-server-koa": "^3.5.0",
@@ -38,7 +42,10 @@
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/node": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.0",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.0",
+    "babel-loader": "^8.2.3",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
